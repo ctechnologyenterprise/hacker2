@@ -198,7 +198,11 @@ export async function handleReactionAdded(
     // getChannel(team_id),    // getKeywords(team_id), // get keywords from upstash
   ]);
 
-  console.log({accessToken, team_id, channel})
+  let body = JSON.stringify({
+    text: `testing`,
+    channel: channel,
+  })
+  console.log({accessToken, team_id, channel, body})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
@@ -206,10 +210,7 @@ export async function handleReactionAdded(
       "Content-type": "application/json; charset=utf-8",
       Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify({
-      text: `testing`,
-      channel: channel,
-    }),
+    body,
   });
 
 
