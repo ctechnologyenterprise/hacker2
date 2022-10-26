@@ -191,14 +191,14 @@ export async function handleReactionAdded(
       message: "Nice try buddyx. Slack signature mismatch.",
     });
   const { team_id } = req.body;
-  const [ accessToken] = await Promise.all([
+
+  const [ accessToken, channel ] = await Promise.all([
     // getPost(parseInt(id)), // get post data from hacker news API
     getAccessToken(team_id), // get access token from upstash
-    // getKeywords(team_id), // get keywords from upstash
+    getChannel(teamId),    // getKeywords(team_id), // get keywords from upstash
   ]);
 
-  const channel = req.body.event.channel; // channel the message was sent in
-  console.log({team_id})
+  console.log({channel})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
