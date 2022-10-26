@@ -190,12 +190,12 @@ export async function handleReactionAdded(
     return res.status(403).json({
       message: "Nice try buddyx. Slack signature mismatch.",
     });
-  const { team_id } = req.body;
-
-  const [ accessToken, channel ] = await Promise.all([
+  const { team_id, event } = req.body;
+  let { channel } = event.item
+  const [ accessToken ] = await Promise.all([
     // getPost(parseInt(id)), // get post data from hacker news API
     getAccessToken(team_id), // get access token from upstash
-    getChannel(team_id),    // getKeywords(team_id), // get keywords from upstash
+    // getChannel(team_id),    // getKeywords(team_id), // get keywords from upstash
   ]);
 
   console.log({accessToken, team_id, channel})
