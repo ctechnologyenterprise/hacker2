@@ -198,7 +198,7 @@ export async function handleReactionAdded(
     getChannel(team_id),    // getKeywords(team_id), // get keywords from upstash
   ]);
 
-  console.log({channel})
+  console.log({accessToken, team_id, channel})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
