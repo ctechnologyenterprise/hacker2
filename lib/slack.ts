@@ -204,15 +204,15 @@ export async function handleReactionAdded(
   })
   console.log({accessToken, team_id, channel, body})
 
-  // const response = await fetch("https://slack.com/api/chat.postMessage", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-type": "application/json; charset=utf-8",
-  //     Authorization: `Bearer ${accessToken}`,
-  //   },
-  //   body,
-  // });
-sendSlackMessage(22, team_id)
+  const response = await fetch("https://slack.com/api/chat.postMessage", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=utf-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body,
+  });
+
   // D03S99GFAR1
   // D03S99GFAR1
 
@@ -220,7 +220,7 @@ sendSlackMessage(22, team_id)
 
 
 
-response.json().then(console.log)
+  // response.json().then(console.log)
   // console.log(response)
 
   // const logResponse = await log(

@@ -23,10 +23,8 @@ export default async function handler(
     return handleReactionRemoved(req, res);
   }
 
-
-
-
   return res.status(404).json({ message: "Unknown event type" });
 }
+
 // http://localhost:3000/api/event
 // curl -d '{"type": "link_shared"}' -H 'Content-Type: application/json' https://slack.mtdr.dev/api/event
