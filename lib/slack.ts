@@ -42,6 +42,7 @@ export function verifyRequest(req: NextApiRequest) {
   }
   const req_body = new URLSearchParams(req.body).toString(); // convert body to URL search params
   const sig_basestring = "v0:" + timestamp + ":" + req_body; // create base string
+  console.log(process.env.SLACK_SIGNING_SECRET)
   const my_signature = // create signature
     "v0=" +
     crypto
