@@ -198,7 +198,7 @@ export async function handleReactionAdded(
   ]);
 
   const channel = req.body.event.channel; // channel the message was sent in
-  console.log({channel})
+  console.log({team_id})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
