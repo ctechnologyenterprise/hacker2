@@ -199,7 +199,7 @@ export async function handleReactionAdded(
 
   const channel = req.body.event.channel; // channel the message was sent in
 
-  const response = await fetch("https://slack.com/api/postMessage", {
+  const response = await fetch("https://slack.com/api/chat.postMessage", {
     // unfurl the hacker news post using the Slack API
     method: "POST",
     headers: {
