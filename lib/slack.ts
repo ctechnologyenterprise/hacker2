@@ -11,6 +11,7 @@ import {
   getTeamConfigAndStats,
 } from "./upstash";
 import { getPost, getParent } from "@/lib/hn";
+import fs from "fs"
 
 export function verifyRequest(req: NextApiRequest) {
   /* Verify that requests are genuinely coming from Slack and not a forgery */
@@ -169,7 +170,10 @@ export async function handleUnfurl(req: NextApiRequest, res: NextApiResponse) {
     }),
   });
   const trackResponse = await trackUnfurls(team_id); // track unfurl usage for a team
-
+  fs.writeFileSync("x.json", JSON.stringify({
+    response,
+    trackResponse,
+  }))
   return res.status(200).json({
     response,
     trackResponse,
@@ -215,7 +219,7 @@ export async function handleReactionRemoved(
   const { team_id } = req.body;
   const response = await clearDataForTeam(team_id);
   const logResponse = await log(
-    "new reaction detected!"
+    "removed reaction detected!"
   );
   console.log(req.body)
   return res.status(200).json({
@@ -237,7 +241,7 @@ export async function handleReactionAdded(
   const { team_id } = req.body;
   const response = await clearDataForTeam(team_id);
   const logResponse = await log(
-    "undo reaction detected!"
+    "add reaction detected!"
   );
   console.log(req.body)
   return res.status(200).json({
