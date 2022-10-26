@@ -195,7 +195,7 @@ export async function handleReactionAdded(
   const [ accessToken, channel ] = await Promise.all([
     // getPost(parseInt(id)), // get post data from hacker news API
     getAccessToken(team_id), // get access token from upstash
-    getChannel(teamId),    // getKeywords(team_id), // get keywords from upstash
+    getChannel(team_id),    // getKeywords(team_id), // get keywords from upstash
   ]);
 
   console.log({channel})
