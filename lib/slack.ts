@@ -62,7 +62,7 @@ export function verifyRequest(req: NextApiRequest) {
   } else {
     return {
       status: false,
-      message: "Nice try buddy. Slack signature mismatch.",
+      message: "Nice try buddy3. Slack signature mismatch.",
     };
   }
 }
@@ -188,7 +188,7 @@ export async function handleUninstall(
     // verify that the request is coming from the correct Slack team
     // here we use the verification token because for some reason signing secret doesn't work
     return res.status(403).json({
-      message: "Nice try buddy. Slack signature mismatch.",
+      message: "Nice try buddy2. Slack signature mismatch.",
     });
   const { team_id } = req.body;
   const response = await clearDataForTeam(team_id);
