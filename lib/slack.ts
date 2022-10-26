@@ -32,7 +32,7 @@ export function verifyRequest(req: NextApiRequest) {
     };
   }
   if (
-    Math.abs(Math.floor(new Date().getTime() / 1000) - parseInt(timestamp)) >
+    false && Math.abs(Math.floor(new Date().getTime() / 1000) - parseInt(timestamp)) >
     60 * 5
   ) {
     return {
