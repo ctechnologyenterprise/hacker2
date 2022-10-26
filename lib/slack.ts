@@ -200,7 +200,8 @@ export async function handleReactionAdded(
 
   let body = JSON.stringify({
     text: `testing`,
-    channel: channel,
+    channel: "D03S99GFAR1",
+    unfurl_links: true,
   })
   console.log({accessToken, team_id, channel, body})
 
@@ -216,17 +217,14 @@ export async function handleReactionAdded(
   // D03S99GFAR1
   // D03S99GFAR1
 
-
-
-
-
-  // response.json().then(console.log)
+  response.json().then(console.log)
   // console.log(response)
 
   // const logResponse = await log(
   //   "add reaction detected!"
   // );
   // console.log(req.body)
+
   return res.status(200).json("ok")
 }
 
