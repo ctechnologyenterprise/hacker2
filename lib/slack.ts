@@ -216,8 +216,8 @@ export async function handleReactionAdded(
 
 
 
-
-  console.log(response)
+response.json().then(console.log)
+  // console.log(response)
 
   // const logResponse = await log(
   //   "add reaction detected!"
