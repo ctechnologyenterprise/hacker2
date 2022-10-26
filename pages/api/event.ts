@@ -1,4 +1,4 @@
-import { handleUninstall, handleUnfurl } from "@/lib/slack";
+import { handleUninstall, handleUnfurl, handleReactionAdded, handleReactionRemoved } from "@/lib/slack";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -15,5 +15,18 @@ export default async function handler(
     return handleUnfurl(req, res);
   }
 
+  if (req.body.event.type === "reaction_added") {
+    return handleReactionAdded(req, res);
+  }
+
+  if (req.body.event.type === "reaction_removed") {
+    return handleReactionRemoved(req, res);
+  }
+
+
+
+
   return res.status(404).json({ message: "Unknown event type" });
 }
+// http://localhost:3000/api/event
+// curl -d '{"type": "link_shared"}' -H 'Content-Type: application/json' https://slack.mtdr.dev/api/event

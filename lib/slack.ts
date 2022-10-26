@@ -202,6 +202,50 @@ export async function handleUninstall(
   });
 }
 
+export async function handleReactionRemoved(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!verifyRequestWithToken(req))
+    // verify that the request is coming from the correct Slack team
+    // here we use the verification token because for some reason signing secret doesn't work
+    return res.status(403).json({
+      message: "Nice try buddyx. Slack signature mismatch.",
+    });
+  const { team_id } = req.body;
+  const response = await clearDataForTeam(team_id);
+  const logResponse = await log(
+    "new reaction detected!"
+  );
+  console.log(req.body)
+  return res.status(200).json({
+    response,
+    logResponse,
+  });
+}
+
+export async function handleReactionAdded(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!verifyRequestWithToken(req))
+    // verify that the request is coming from the correct Slack team
+    // here we use the verification token because for some reason signing secret doesn't work
+    return res.status(403).json({
+      message: "Nice try buddyx. Slack signature mismatch.",
+    });
+  const { team_id } = req.body;
+  const response = await clearDataForTeam(team_id);
+  const logResponse = await log(
+    "undo reaction detected!"
+  );
+  console.log(req.body)
+  return res.status(200).json({
+    response,
+    logResponse,
+  });
+}
+
 export async function log(message: string) {
   /* Log a message to the console */
   console.log(message);
