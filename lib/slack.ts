@@ -213,6 +213,7 @@ export async function handleReactionAdded(
 
     }),
   });
+  console.log({response})
 
   // const logResponse = await log(
   //   "add reaction detected!"
