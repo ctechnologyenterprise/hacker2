@@ -207,7 +207,7 @@ export async function handleReactionAdded(
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
-      text: `https://news.ycombinator.com/item?id=${postId}`,
+      text: `testing`,
       channel: channel,
     }),
   });
