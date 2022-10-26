@@ -207,12 +207,17 @@ export async function handleReactionAdded(
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
-      channel,
-      text: "text from bot"
-      // ts,
+      text: `https://news.ycombinator.com/item?id=${postId}`,
+      channel: channel,
     }),
   });
-  console.log(req.body)
+
+
+
+
+
+
+  console.log(response)
 
   // const logResponse = await log(
   //   "add reaction detected!"
