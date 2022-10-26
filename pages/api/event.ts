@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.body.challenge) return res.status(200).json(req.body); // unique case for Slack challenge
-
+  console.log({eventType: req.body.event.type})
   if (req.body.event.type === "app_uninstalled") {
     return handleUninstall(req, res);
   }
