@@ -203,7 +203,7 @@ export async function handleReactionAdded(
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-type": "application/json; charset=utf-8",
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
