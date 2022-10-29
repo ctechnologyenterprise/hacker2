@@ -200,7 +200,7 @@ export async function handleReactionAdded(
 
   let body = JSON.stringify({
     text: `testing`,
-    channel: "D03S99GFAR1",
+    channel,
     unfurl_links: true,
   })
   console.log({accessToken, team_id, channel, body})
