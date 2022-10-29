@@ -251,7 +251,7 @@ export async function handleMessage(
     let score = await sentiment(event.text)
 
     let body = JSON.stringify({
-      text: `score: ${score}`,
+      text: `message: ${event.text} - score: ${score}`,
       channel,
       unfurl_links: true,
     })
