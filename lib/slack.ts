@@ -11,6 +11,7 @@ import {
   getTeamConfigAndStats,
 } from "./upstash";
 import { getPost, getParent } from "@/lib/hn";
+import {sentiment} from "@/lib/sentiment";
 import fs from "fs"
 
 export function verifyRequest(req: NextApiRequest) {
@@ -246,8 +247,10 @@ export async function handleMessage(
     getAccessToken(team_id), // get access token from upstash
   ]);
 
+  let score = await sentiment(event.message.text)
+
   let body = JSON.stringify({
-    text: `a message was posted`,
+    text: `score: ${score}`,
     channel,
     unfurl_links: true,
   })
