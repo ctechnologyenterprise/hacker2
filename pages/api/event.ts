@@ -19,7 +19,7 @@ export default async function handler(
     return handleReactionAdded(req, res);
   }
 
-  if (req.body.event.type === "message_channels") {
+  if (req.body.event.type === "message") {
     return handleMessage(req, res);
   }
 
