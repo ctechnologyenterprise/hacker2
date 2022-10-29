@@ -237,7 +237,7 @@ export async function handleMessage(
       message: "Nice try buddyx. Slack signature mismatch.",
     });
   const { team_id, event } = req.body;
-  let { channel } = event.item
+  let { channel } = event
   const [ accessToken ] = await Promise.all([
     getAccessToken(team_id), // get access token from upstash
   ]);
@@ -247,7 +247,7 @@ export async function handleMessage(
     channel,
     unfurl_links: true,
   })
-  console.log({accessToken, team_id, channel, body})
+  console.log({accessToken, team_id, channel, event})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
