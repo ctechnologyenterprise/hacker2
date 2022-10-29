@@ -236,8 +236,8 @@ export async function handleMessage(
     return res.status(403).json({
       message: "Nice try buddyx. Slack signature mismatch.",
     });
-  const { team_id, event, bot_id } = req.body;
-  if(bot_id){
+  const { team_id, event } = req.body;
+  if(event.bot_id){
     return res.status(200).json("ok")
   }
 
