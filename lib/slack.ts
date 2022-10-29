@@ -199,7 +199,7 @@ export async function handleReactionAdded(
   ]);
 
   let body = JSON.stringify({
-    text: `testing`,
+    text: `reaction: ${event.reaction}`,
     channel,
     unfurl_links: true,
   })
