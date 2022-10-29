@@ -236,7 +236,11 @@ export async function handleMessage(
     return res.status(403).json({
       message: "Nice try buddyx. Slack signature mismatch.",
     });
-  const { team_id, event } = req.body;
+  const { team_id, event, bot_id } = req.body;
+  if(bot_id){
+    return res.status(200).json("ok")
+  }
+
   let { channel } = event
   const [ accessToken ] = await Promise.all([
     getAccessToken(team_id), // get access token from upstash
