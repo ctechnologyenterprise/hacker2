@@ -16,8 +16,8 @@ export async function sentiment(content: any){
   let data = await r.json()
   console.log(data)
 
-  if(data?.data?.documentSentiment){
-    return (data.data.documentSentiment.score + 1) * 4
+  if(data?.documentSentiment){
+    return (data.documentSentiment.score + 1) * 4
   }
 }
 
