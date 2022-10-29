@@ -247,8 +247,8 @@ export async function handleMessage(
     getAccessToken(team_id), // get access token from upstash
   ]);
 
-  if(event.message?.text){
-    let score = await sentiment(event.message.text)
+  if(event.text){
+    let score = await sentiment(event.text)
 
     let body = JSON.stringify({
       text: `score: ${score}`,
