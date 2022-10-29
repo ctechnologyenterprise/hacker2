@@ -247,25 +247,28 @@ export async function handleMessage(
     getAccessToken(team_id), // get access token from upstash
   ]);
 
-  let score = await sentiment(event.message.text)
+  if(event.message.text){
+    let score = await sentiment(event.message.text)
 
-  let body = JSON.stringify({
-    text: `score: ${score}`,
-    channel,
-    unfurl_links: true,
-  })
-  console.log({accessToken, team_id, channel, event})
+    let body = JSON.stringify({
+      text: `score: ${score}`,
+      channel,
+      unfurl_links: true,
+    })
+    console.log({accessToken, team_id, channel, event})
 
-  const response = await fetch("https://slack.com/api/chat.postMessage", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json; charset=utf-8",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body,
-  });
+    const response = await fetch("https://slack.com/api/chat.postMessage", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=utf-8",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body,
+    });
 
-  response.json().then(console.log)
+    response.json().then(console.log)
+
+  }
 
   return res.status(200).json("ok")
 }
