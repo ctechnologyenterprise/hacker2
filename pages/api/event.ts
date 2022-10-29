@@ -1,4 +1,4 @@
-import { handleUninstall, handleUnfurl, handleReactionAdded, handleReactionRemoved } from "@/lib/slack";
+import { handleUninstall, handleUnfurl, handleReactionAdded, handleReactionRemoved, handleMessage } from "@/lib/slack";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -17,6 +17,10 @@ export default async function handler(
 
   if (req.body.event.type === "reaction_added") {
     return handleReactionAdded(req, res);
+  }
+
+  if (req.body.event.type === "message_channels") {
+    return handleMessage(req, res);
   }
 
   if (req.body.event.type === "reaction_removed") {

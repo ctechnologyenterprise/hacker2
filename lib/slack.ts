@@ -228,6 +228,40 @@ export async function handleReactionAdded(
   return res.status(200).json("ok")
 }
 
+export async function handleMessage(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!verifyRequestWithToken(req))
+    return res.status(403).json({
+      message: "Nice try buddyx. Slack signature mismatch.",
+    });
+  const { team_id, event } = req.body;
+  let { channel } = event.item
+  const [ accessToken ] = await Promise.all([
+    getAccessToken(team_id), // get access token from upstash
+  ]);
+
+  let body = JSON.stringify({
+    text: `a message was posted`,
+    channel,
+    unfurl_links: true,
+  })
+  console.log({accessToken, team_id, channel, body})
+
+  const response = await fetch("https://slack.com/api/chat.postMessage", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=utf-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body,
+  });
+
+  response.json().then(console.log)
+
+  return res.status(200).json("ok")
+}
 
 
 export function verifyRequestWithToken(req: NextApiRequest) {
