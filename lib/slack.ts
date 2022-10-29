@@ -203,7 +203,7 @@ export async function handleReactionAdded(
     channel,
     unfurl_links: true,
   })
-  console.log({accessToken, team_id, channel, body, item: event.item})
+  console.log({accessToken, team_id, channel, body, event})
 
   const response = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
