@@ -4,7 +4,7 @@ import Image from "next/image";
 import GithubCorner from "@/components/github-corner";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-
+// https://slack.mtdr.dev/success
 export default function SuccessTeam() {
   return (
     <div>
@@ -34,7 +34,7 @@ export default function SuccessTeam() {
         </div>
 
         <div
-          className="relative w-full max-w-2xl border border-gray-200 drop-shadow-md 
+          className="relative w-full max-w-2xl border border-gray-200 drop-shadow-md
          sm:rounded-lg overflow-hidden"
         >
           <LiteYouTubeEmbed
