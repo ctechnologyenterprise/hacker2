@@ -49,21 +49,22 @@ export default function Home() {
             aspectHeight={10}
           />
         </div>
-        <div className="flex flex-col text-center space-y-2">
-          <SlackButton
-            text="Add to Slack"
-            url={`https://slack.com/oauth/v2/authorize?scope=chat:write,chat:write.public,links:read,links:write,commands,team:read&client_id=${process.env.NEXT_PUBLIC_SLACK_CLIENT_ID}`}
-          />
-          <a
-            href="https://github.com/vercel-labs/hacker-news-slack-bot#deploy-your-own"
-            className="text-gray-500 hover:text-black text-sm"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Looking to self-host instead?
-          </a>
-        </div>
-        {!session && (
+        {session ? (
+          <div className="flex flex-col text-center space-y-2">
+            <SlackButton
+              text="Add to Slack"
+              url={`https://slack.com/oauth/v2/authorize?scope=chat:write,chat:write.public,links:read,links:write,commands,team:read&client_id=${process.env.NEXT_PUBLIC_SLACK_CLIENT_ID}`}
+            />
+            <a
+              href="https://github.com/vercel-labs/hacker-news-slack-bot#deploy-your-own"
+              className="text-gray-500 hover:text-black text-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Looking to self-host instead?
+            </a>
+          </div>
+        ) : (
           <button
             type="button"
             className="text-black bg-white ring-2 hover:text-white hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
